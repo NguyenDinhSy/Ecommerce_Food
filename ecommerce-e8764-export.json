@@ -1,0 +1,58 @@
+{
+  "Admins" : {
+    "200" : {
+      "name" : "syn",
+      "password" : "sin",
+      "phone" : "200"
+    }
+  },
+  "Category" : {
+    "01" : {
+      "Image" : "https://cdn.pixabay.com/photo/2016/03/05/19/02/hamburger-1238246_960_720.jpg",
+      "Name" : "FastFood"
+    },
+    "02" : {
+      "Image" : "https://cdn.pixabay.com/photo/2016/03/05/19/02/hamburger-1238246_960_720.jpg",
+      "Name" : "FastFood"
+    }
+  },
+  "Products" : {
+    "Th11 22, 201922:43:37 PM" : {
+      "category" : "an_vat",
+      "date" : "Th11 22, 2019",
+      "description" : "is dj",
+      "image" : "https://firebasestorage.googleapis.com/v0/b/ecommerce-e8764.appspot.com/o/Product%20Images%2Fimage%3A48239Th11%2022%2C%20201922%3A43%3A37%20PM.jpg?alt=media&token=d1783eea-d4df-4ac2-911f-0a8a8d101726",
+      "pid" : "Th11 22, 201922:43:37 PM",
+      "pname" : "alan",
+      "price" : "20$",
+      "time" : "22:43:37 PM"
+    },
+    "Th11 23, 201916:47:53 PM" : {
+      "category" : "an_vat",
+      "date" : "Th11 23, 2019",
+      "description" : "c",
+      "image" : "https://firebasestorage.googleapis.com/v0/b/ecommerce-e8764.appspot.com/o/Product%20Images%2Fimage%3A48239Th11%2023%2C%20201916%3A47%3A53%20PM.jpg?alt=media&token=141d5831-ad71-44d9-bea8-688ee00b8ce0",
+      "pid" : "Th11 23, 201916:47:53 PM",
+      "pname" : "cơm",
+      "price" : "30$",
+      "time" : "16:47:53 PM"
+    }
+  },
+  "Users" : {
+    "113" : {
+      "name" : "syne",
+      "password" : "sin",
+      "phone" : "113"
+    },
+    "114" : {
+      "name" : "synes",
+      "password" : "sin",
+      "phone" : "114"
+    },
+    "559" : {
+      "name" : "dfb",
+      "password" : "sgh",
+      "phone" : "559"
+    }
+  }
+}
