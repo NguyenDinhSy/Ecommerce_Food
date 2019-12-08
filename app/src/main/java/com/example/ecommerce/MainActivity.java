@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import com.example.ecommerce.Model.Users;
 import com.example.ecommerce.Prevalent.Prevalent;
+//import com.example.ecommerce.category.model.Category;
+//import com.example.ecommerce.category.view.CategoryListFragment;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -39,6 +41,17 @@ public class MainActivity extends AppCompatActivity {
         joinNowButton = (Button) findViewById(R.id.main_join_now_btn);
         loginButton = (Button) findViewById(R.id.main_login_btn);
         loadingBar = new ProgressDialog(this);
+      //  test = (Button) findViewById(R.id.test);
+
+
+//        test.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View view, MotionEvent motionEvent) {
+//                Intent intent = new Intent(MainActivity.this, CategoryListFragment.class);
+//                startActivity(intent);
+//                return true;
+//            }
+//        });
 
 
         Paper.init(this);
@@ -100,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
                             loadingBar.dismiss();
 
                             Intent intent = new Intent(MainActivity.this, Home2Activity.class);
+                            Prevalent.currentOnlineUser = usersData;
                             startActivity(intent);
                         }else {
                             loadingBar.dismiss();

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:orientation="vertical"
+    tools:context="com.example.ecommerce.category.view.CreateCategory">
+    //50
+    <LinearLayout
+        android:background="@color/colorPrimaryDark"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:gravity="center"
+            android:textSize="20dp"
+            android:textColor="@android:color/white"
+            android:text="Create new Category"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    //70
+    <LinearLayout
+        android:paddingRight="40dp"
+        android:paddingLeft="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
+        <EditText
+            android:id="@+id/edtCategoryName_createCategory"
+            android:gravity="center"
+            android:hint="Enter category name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    //20
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp">
+    </LinearLayout>
+    //30
+    <LinearLayout
+        android:weightSum="5"
+        android:orientation="horizontal"
+        android:paddingRight="40dp"
+        android:paddingLeft="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="30dp">
+        <Button
+            android:id="@+id/btnCancelCreateCategory"
+            android:textColor="@android:color/white"
+            android:text="Cancel"
+            android:layout_weight="2"
+            android:background="@color/colorPrimaryDark"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+        <Button
+            android:id="@+id/btnOkCreateCategory"
+            android:textColor="@android:color/white"
+            android:text="Ok"
+            android:layout_weight="2"
+            android:background="@color/colorPrimaryDark"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+</LinearLayout>
