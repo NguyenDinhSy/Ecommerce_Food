@@ -4,7 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.ecommerce.Database.Database;
+//import com.example.ecommerce.Database.Database;
 import com.example.ecommerce.Model.Products;
 import com.example.ecommerce.Prevalent.Prevalent;
 import com.example.ecommerce.ViewHolder.ProductViewHolder;
@@ -53,6 +53,7 @@ public class Home2Activity extends AppCompatActivity
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
 
+
     //Database localDB;
 
     private String type = "";
@@ -90,9 +91,11 @@ public class Home2Activity extends AppCompatActivity
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
 
-                Intent intent = new Intent(Home2Activity.this, CartActivity.class);
-                startActivity(intent);
-
+                if(motionEvent.getAction() == MotionEvent.ACTION_UP) {
+                    Intent intent = new Intent(Home2Activity.this, CartActivity.class);
+                    startActivity(intent);
+                    return true;
+                }
 
                 return true;
             }
@@ -114,10 +117,11 @@ public class Home2Activity extends AppCompatActivity
         TextView userNameTextView = headerView.findViewById(R.id.user_profile_name);
         CircleImageView profileImageView = headerView.findViewById(R.id.user_profile_image);
 
-        userNameTextView.setText(Prevalent.currentOnlineUser.getName());
+        if (!type.equals("Admin")) {
+            userNameTextView.setText(Prevalent.currentOnlineUser.getName());
 
-        Picasso.get().load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
-
+            Picasso.get().load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
+        }
 
         recyclerView = findViewById(R.id.recycler_menu);
         recyclerView.setHasFixedSize(true);
@@ -146,7 +150,7 @@ public class Home2Activity extends AppCompatActivity
 
                         holder.txtProductName.setText(model.getPname());
                         holder.txtProductDescription.setText(model.getDescription());
-                        holder.txtProductPrice.setText("Giá ="+ model.getPrice()+"$");
+                        holder.txtProductPrice.setText("Giá:"+ model.getPrice()+"$");
                         Picasso.get().load(model.getImage()).into(holder.imageView);
 
                         //caution
@@ -209,9 +213,15 @@ public class Home2Activity extends AppCompatActivity
                             @Override
                             public boolean onTouch(View view, MotionEvent motionEvent) {
 
-                                Intent intent = new Intent(Home2Activity.this, FoodDetailActivity.class);
-                                intent.putExtra("pid", model.getPid());
-                                startActivity(intent);
+                                if (type.equals("Admin")) {
+                                    Intent intent = new Intent(Home2Activity.this, AdminMaintainProductsActivity.class);
+                                    intent.putExtra("pid", model.getPid());
+                                    startActivity(intent);
+                                }else {
+                                    Intent intent = new Intent(Home2Activity.this, FoodDetailActivity.class);
+                                    intent.putExtra("pid", model.getPid());
+                                    startActivity(intent);
+                                }
                                 return true;
                             }
                         });
@@ -279,16 +289,17 @@ public class Home2Activity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_cart) {
-
-            Intent intent =  new Intent(Home2Activity.this, CartActivity.class);
-            startActivity(intent);
-
+            if (!type.equals("Admin")) {
+                Intent intent = new Intent(Home2Activity.this, CartActivity.class);
+                startActivity(intent);
+            }
 
         } else if (id == R.id.nav_search) {
 
-
-            Intent intent =  new Intent(Home2Activity.this, SearchProductsActivity.class);
-            startActivity(intent);
+            if (!type.equals("Admin")) {
+                Intent intent = new Intent(Home2Activity.this, SearchProductsActivity.class);
+                startActivity(intent);
+            }
         }
 
         else if (id == R.id.nav_categories) {
@@ -297,9 +308,11 @@ public class Home2Activity extends AppCompatActivity
         } else if (id == R.id.nav_settings) {
 
 
-            Intent intent =  new Intent(Home2Activity.this, SettingsActivity.class);
-            startActivity(intent);
+            if (!type.equals("Admin")) {
 
+                Intent intent = new Intent(Home2Activity.this, SettingsActivity.class);
+                startActivity(intent);
+            }
 
 
         } else if (id == R.id.nav_logout) {

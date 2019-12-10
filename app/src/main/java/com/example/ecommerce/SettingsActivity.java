@@ -10,7 +10,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.MotionEvent;
+import android.view.MotionEvent;    
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -79,8 +79,11 @@ public class SettingsActivity extends AppCompatActivity {
       closeTextBtn.setOnTouchListener(new View.OnTouchListener() {
           @Override
           public boolean onTouch(View view, MotionEvent motionEvent) {
+              if(motionEvent.getAction() == MotionEvent.ACTION_UP) {
 
-             finish();
+                  finish();
+                  return true;
+              }
               return true;
           }
       });
@@ -89,10 +92,13 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
 
-               Intent intent = new Intent(SettingsActivity.this, ResetpasswordActivity.class);
-               intent.putExtra("check", "settings");
-               startActivity(intent);
+                if(motionEvent.getAction() == MotionEvent.ACTION_UP) {
 
+                    Intent intent = new Intent(SettingsActivity.this, ResetpasswordActivity.class);
+                    intent.putExtra("check", "settings");
+                    startActivity(intent);
+                    return true;
+                }
                 return true;
             }
         });
@@ -102,16 +108,16 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
 
-                if (checker.equals("clicked"))
-                {
-                    userInfoSaved();
+                if(motionEvent.getAction() == MotionEvent.ACTION_UP) {
+                    if (checker.equals("clicked")) {
+                        userInfoSaved();
+                    } else {
+                        updateOnlyUserInfo();
+                    }
+                    return true;
                 }
-                else
-                {
-                   updateOnlyUserInfo();
-                }
-
                 return true;
+
             }
         });
 
@@ -121,6 +127,12 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
 
+                if(motionEvent.getAction() == MotionEvent.ACTION_UP){
+
+                    // Do what you want
+
+
+
                 checker = "clicked";
 
              //   CropImage.activity(imageUri).start(SettingsActivity.this);
@@ -128,7 +140,8 @@ public class SettingsActivity extends AppCompatActivity {
                 CropImage.activity(imageUri)
                         .setAspectRatio(1,1)
                         .start(SettingsActivity.this);
-
+                return true;
+                }
 
                 return true;
             }

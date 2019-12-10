@@ -52,10 +52,12 @@ public class AdminCategoryActivity extends AppCompatActivity {
         maintainProductsBtn.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-
-                Intent intent = new Intent(AdminCategoryActivity.this, Home2Activity.class);
-                intent.putExtra("Admin", "Admin");
-                startActivity(intent);
+                if(motionEvent.getAction() == MotionEvent.ACTION_UP) {
+                    Intent intent = new Intent(AdminCategoryActivity.this, Home2Activity.class);
+                    intent.putExtra("Admin", "Admin");
+                    startActivity(intent);
+                return true;
+                }
                 return true;
             }
         });
@@ -74,11 +76,14 @@ public class AdminCategoryActivity extends AppCompatActivity {
         LogoutBtn.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                Intent intent = new Intent(AdminCategoryActivity.this, MainActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
-                finish();
 
+                if(motionEvent.getAction() == MotionEvent.ACTION_UP) {
+                    Intent intent = new Intent(AdminCategoryActivity.this, MainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                    finish();
+                return true;
+                }
                 return true;
             }
         });

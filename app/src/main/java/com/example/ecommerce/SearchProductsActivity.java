@@ -49,11 +49,13 @@ public class SearchProductsActivity extends AppCompatActivity {
             public boolean onTouch(View view, MotionEvent motionEvent) {
 
 
-                SearchInput = inputText.getText().toString();
+                if(motionEvent.getAction() == MotionEvent.ACTION_UP) {
 
-                onStart();
+                    SearchInput = inputText.getText().toString();
 
-
+                    onStart();
+                    return true;
+                }
                 return true;
             }
         });
@@ -67,7 +69,7 @@ public class SearchProductsActivity extends AppCompatActivity {
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Products");
 
-        FirebaseRecyclerOptions<Products> options =
+        FirebaseRecyclerOptions<Products> options = //startAt
                 new FirebaseRecyclerOptions.Builder<Products>()
                         .setQuery(reference.orderByChild("pname").startAt(SearchInput), Products.class)
                         .build();
@@ -88,11 +90,15 @@ public class SearchProductsActivity extends AppCompatActivity {
                             @Override
                             public boolean onTouch(View view, MotionEvent motionEvent) {
 
+                                if(motionEvent.getAction() == MotionEvent.ACTION_UP){
                                 Intent intent = new Intent(SearchProductsActivity.this, FoodDetailActivity.class);
                                 intent.putExtra("pid", model.getPid());
                                 startActivity(intent);
+                                    return true;
 
+                                }
                                 return true;
+
                             }
                         });
                     }

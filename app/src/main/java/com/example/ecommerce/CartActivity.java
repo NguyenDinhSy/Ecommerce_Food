@@ -63,12 +63,16 @@ public class CartActivity extends AppCompatActivity {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
 
-                txtTotalAmount.setText("Total Price = $" + String.valueOf(overTotalPrice));
+                if(motionEvent.getAction() == MotionEvent.ACTION_UP) {
 
-                Intent intent = new Intent(CartActivity.this, ConfirmFinalOrderActivity.class);
-                intent.putExtra("Total Price", String.valueOf(overTotalPrice));
-                startActivity(intent);
-                finish();
+                    txtTotalAmount.setText("Tổng giá:$" + String.valueOf(overTotalPrice));
+
+                    Intent intent = new Intent(CartActivity.this, ConfirmFinalOrderActivity.class);
+                    intent.putExtra("Total Price", String.valueOf(overTotalPrice));
+                    startActivity(intent);
+                    finish();
+                    return true;
+                }
                 return true;
             }
         });

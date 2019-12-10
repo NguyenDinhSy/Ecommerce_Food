@@ -79,8 +79,11 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
 
-              OpenGallery();
+                if(motionEvent.getAction() == MotionEvent.ACTION_UP) {
 
+                    OpenGallery();
+                    return  true;
+                }
 
                 return true;
                 }
@@ -92,8 +95,10 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
 
-
-                ValidateProductData();
+                if(motionEvent.getAction() == MotionEvent.ACTION_UP) {
+                    ValidateProductData();
+                return true;
+                }
                 return true;
             }
         });

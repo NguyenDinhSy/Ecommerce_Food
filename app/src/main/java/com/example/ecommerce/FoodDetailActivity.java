@@ -31,6 +31,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 import com.stepstone.apprating.AppRatingDialog;
 import com.stepstone.apprating.listener.RatingDialogListener;
+import com.google.android.gms.common.GooglePlayServicesUtil;
 
 import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
@@ -113,45 +114,45 @@ public class FoodDetailActivity extends AppCompatActivity implements RatingDialo
         });
 
 
-
-            getRatingFood(foodID);
+        // GEt rangting
+      //      getRatingFood(foodID);
     }
 
     // OUTSIDE ___________________________________________________________________________________________
 
-
-    private void getRatingFood(final String foodID){
-
-        com.google.firebase.database.Query foodRating =  ratings.orderByChild("pid").equalTo(foodID);
-
-        foodRating.addValueEventListener(new ValueEventListener() {
-            int count =0, sum = 0 ;
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                for (DataSnapshot postsnapshot: dataSnapshot.getChildren()){
-
-                    Ratings  item = postsnapshot.getValue(Ratings.class);
-
-                    sum+= Integer.parseInt(item.getRatingValue());
-                    count++;
-
-                }
-                if (count != 0) {
-                    float average = sum / count;
-                    ratingBar.setRating(average);
-                }
-
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-    }
+//
+//    private void getRatingFood(final String foodID){
+//
+//        com.google.firebase.database.Query foodRating =  ratings.orderByChild("pid").equalTo(foodID);
+//
+//        foodRating.addValueEventListener(new ValueEventListener() {
+//            int count =0, sum = 0 ;
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//
+//                for (DataSnapshot postsnapshot: dataSnapshot.getChildren()){
+//
+//                    Ratings  item = postsnapshot.getValue(Ratings.class);
+//
+//                    sum+= Integer.parseInt(item.getRatingValue());
+//                    count++;
+//
+//                }
+//                if (count != 0) {
+//                    float average = sum / count;
+//                    ratingBar.setRating(average);
+//                }
+//
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
+//
+//    }
 
 
 
@@ -254,6 +255,7 @@ public class FoodDetailActivity extends AppCompatActivity implements RatingDialo
                     productPrice.setText(products.getPrice());
                     productDescription.setText(products.getDescription());
                     Picasso.get().load(products.getImage()).into(productImage);
+
                 }
             }
 
@@ -306,6 +308,9 @@ public class FoodDetailActivity extends AppCompatActivity implements RatingDialo
     public void onNeutralButtonClicked() {
 
     }
+
+    // BUTTON SUBMIT
+
 
     @Override
     public void onPositiveButtonClicked(int value, String comments) {
